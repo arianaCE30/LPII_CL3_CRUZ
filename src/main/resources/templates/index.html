@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymelead.org">
+	<head>
+		<title>Inicio de página</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav class="navbar navbar-expand-lg bg-primary bg-dark navbar-dark">
+			<div class="container-fluid">
+				<span class="navbar-brand mb-0 h1"></span>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/productos}">CRUD</a></li>
+					</ul>
+				</div>
+	
+			</div>
+		</nav>
+		<div class="container mt-4">
+			<div class="row justify-content-center">
+				<h1 class="text-center">NUEVO PRODUCTO</h1>
+				<h2 class="text-center">Listado de Productos</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<a th:href="@{/producto/nuevo}" class="btn btn-success mb-3">Añadir producto</a>
+				</div>
+			</div>
+			<table class="table table-striped">
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th>Codigo</th>
+						<th>Nombre</th>
+						<th>PrecioVenta</th>
+						<th>PrecioCompra</th>
+						<th>Estado</th>
+						<th>Stock</th>
+						<th>Descripcion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="p:${productos}" class="text-center align-middle">
+						<td th:text="${p.idProductoCL3}"></td>
+						<td th:text="${p.nombreCL3}"></td>
+						<td th:text="${p.precioVentaCL3}"></td>
+						<td th:text="${p.precioCompraCL3}"></td>
+						<td th:text="${p.estadoCL3}"></td>
+						<td th:text="${p.stock}"></td>
+						<td th:text="${p.descripCL3}"></td>
+
+						<td>
+							<a th:href="@{/producto/editar/{id}(id=${p.idProductoCL3})}" class="btn btn-info">Update</a>
+							<a th:href="@{/producto/{id}(id=${p.idProductoCL3})}" class="btn btn-danger">Eliminar</a>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
